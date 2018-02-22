@@ -15,7 +15,7 @@ public class TimestampValueTest {
 
     @Test
     public void testTimestampValue_issue525() throws JSQLParserException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        DateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd HH:mm:ss", Locale.getDefault());
         String currentDate = dateFormat.format(new Date());
         TimestampValue tv = new TimestampValue(currentDate);
         System.out.println(tv.toString());
@@ -26,6 +26,11 @@ public class TimestampValueTest {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         String currentDate = dateFormat.format(new Date());
         TimestampValue tv = new TimestampValue("'" + currentDate + "'");
+        System.out.println(tv.toString());
+    }
+    @Test
+    public void testTimestampValueWithQuotation_MyIssue() throws JSQLParserException {
+        TimestampValue tv = new TimestampValue("'2018-02-22T08:33:20.928'");
         System.out.println(tv.toString());
     }
 }
